@@ -11,7 +11,6 @@ module.exports = {
       padding: '1rem',
     },
     extend: {},
-
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
