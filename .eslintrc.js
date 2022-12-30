@@ -33,6 +33,7 @@ module.exports = {
     ],
     'no-unused-vars': 'warn',
     'no-restricted-globals': 'warn',
+    'global/require': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

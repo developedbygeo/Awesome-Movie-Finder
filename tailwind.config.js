@@ -1,16 +1,44 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   darkMode: 'class',
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
       padding: '1rem',
     },
-    extend: {},
+    extend: {
+      transitionDuration: {
+        0: '0ms',
+        250: '250ms',
+      },
+      rotate: {
+        '-45': '-45deg',
+        '-90': '-90deg',
+        '-180': '-180deg',
+        '-270': '-270deg',
+        '-360': '-360deg',
+      },
+      maxWidth: {
+        1: '1rem',
+        2: '2rem',
+        3: '3rem',
+        4: '4rem',
+        5: '5rem',
+        '1/2': '50%',
+        '1/3': '33.333333%',
+        '2/3': '66.666667%',
+        '1/4': '25%',
+        '3/4': '75%',
+      },
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -35,5 +63,10 @@ module.exports = {
     },
   },
   // eslint-disable-next-line global-require
-  plugins: [require('tailwindcss-fluid-type')],
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant('group-active-link', ':merge(.group).active-link &');
+    }),
+    require('tailwindcss-fluid-type'),
+  ],
 };
