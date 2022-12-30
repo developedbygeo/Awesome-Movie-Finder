@@ -10,7 +10,7 @@ const MobileNav = () => (
     animate="visible"
     exit="exit"
     variants={navWrapperMobile}
-    className="flex justify-around items-center lg:flex-col lg:justify-evenly lg:h-full lg:w-full absolute top-[10vh] w-screen h-[90vh] left-0 flex-col from-black-700 to-black-500 bg-gradient-to-br lg:hidden"
+    className="flex py-20 justify-around items-center lg:flex-col lg:justify-evenly lg:h-full lg:w-full absolute top-[10vh] w-screen h-[90vh] left-0 flex-col from-black-700 to-black-500 bg-gradient-to-br lg:hidden"
   >
     {nav.map((item) => (
       <motion.div variants={navItem} key={item.id}>
