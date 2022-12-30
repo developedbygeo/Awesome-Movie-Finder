@@ -12,7 +12,8 @@ const NavLink = ({ children, className, activeClassName, ...props }) => {
 
       const activePathName = new URL(asPath, location.href).pathname;
 
-      const newClass = linkPath === activePathName ? `${className} ${activeClassName || 'active'}`.trim() : className;
+      const newClass =
+        linkPath === activePathName ? `${className} ${activeClassName || 'group active-link'}`.trim() : className;
 
       if (newClass !== computedClassName) {
         setComputedClassName(newClass);
