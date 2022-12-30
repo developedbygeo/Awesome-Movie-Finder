@@ -1,41 +1,28 @@
 import { motion } from 'framer-motion';
 import NavLink from '@/components/UI/NavLink';
 
-import { RiLayoutGridFill, RiFilmFill, RiTvFill, RiBookmarkFill } from 'react-icons/ri';
 import { navWrapper, navItem } from '@/utils/animations';
+import nav from '@/data/nav';
 
-// TODO map over a nav array instead of hardcoding the links
-
-const Nav = () => (
+const Nav = ({ className, isMobile = false }) => (
   <motion.nav
     initial="hidden"
     animate="visible"
     variants={navWrapper}
-    className="flex justify-around items-center lg:flex-col lg:h-full lg:w-full"
+    className={`flex justify-around items-center lg:flex-col lg:justify-evenly lg:h-full lg:w-full ${className}`}
   >
-    <motion.div variants={navItem}>
-      <NavLink className="link" href="/">
-        <RiLayoutGridFill className="text-3xl" title="Home" />
-      </NavLink>
-    </motion.div>
-
-    <motion.div variants={navItem}>
-      <NavLink className="link" href="/movies">
-        <RiFilmFill className="text-3xl" title="Movies" />
-      </NavLink>
-    </motion.div>
-
-    <motion.div variants={navItem}>
-      <NavLink className="link" href="/tv-shows">
-        <RiTvFill className="text-3xl" title="TV Shows" />
-      </NavLink>
-    </motion.div>
-
-    <motion.div variants={navItem}>
-      <NavLink className="link" href="/bookmarks">
-        <RiBookmarkFill className="text-3xl" title="Bookmarks" />
-      </NavLink>
-    </motion.div>
+    {nav.map((item) => (
+      <motion.div variants={navItem} key={item.id}>
+        <NavLink
+          className="link text-4xl flex justify-center text-secondary hover:text-black-200 transition-colors duration-250 ease-in"
+          href={item.path}
+          title={item.name}
+        >
+          {item.icon}
+          {isMobile && <span className="ml-2">{item.name}</span>}
+        </NavLink>
+      </motion.div>
+    ))}
   </motion.nav>
 );
 
