@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['next/core-web-vitals', 'plugin:react/recommended', 'airbnb', 'prettier'],
+  extends: [
+    'next/core-web-vitals',
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -34,6 +39,7 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-restricted-globals': 'warn',
     'global/require': 'off',
+    camelcase: 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

@@ -8,7 +8,10 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     container: {
       center: true,
@@ -32,10 +35,10 @@ module.exports = {
         3: '3rem',
         4: '4rem',
         5: '5rem',
-        '1/2': '50%',
-        '1/3': '33.333333%',
-        '2/3': '66.666667%',
         '1/4': '25%',
+        '1/3': '33.333333%',
+        '1/2': '50%',
+        '2/3': '66.666667%',
         '3/4': '75%',
       },
     },
@@ -60,6 +63,11 @@ module.exports = {
         800: '#090c13',
         900: '#040609',
       },
+    },
+    boxShadow: {
+      error: '0 0 0 0 rgb(252, 71, 71) inset, rgb(252, 71, 71) 0 0 0 0.4rem',
+      focus:
+        '0 0 0 0 rgb(130, 143, 176) inset, rgb(130, 143, 176) 0 0 0 0.4rem',
     },
   },
   // eslint-disable-next-line global-require
