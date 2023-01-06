@@ -1,5 +1,7 @@
 import { RiFilmFill, RiTvFill } from 'react-icons/ri';
 
+// TODO fix details and icon size
+
 const ItemDetails = ({ title, date, platform, hasNoPlatform, className }) => {
   const icon = platform === 'tv' ? <RiTvFill /> : <RiFilmFill />;
 
