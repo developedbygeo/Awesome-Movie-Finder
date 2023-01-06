@@ -18,6 +18,14 @@
 }
 
 @layer components {
+  .highlight-focus {
+    @apply focus:outline-none focus:shadow-focus;
+  }
+
+  .btn {
+    @apply border-none outline-none bg-transparent cursor-pointer;
+  }
+
   .container {
     @apply mx-auto px-6 lg:px-8 grid grid-cols-12 gap-2;
   }
