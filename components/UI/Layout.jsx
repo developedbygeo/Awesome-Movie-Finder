@@ -1,9 +1,13 @@
-import Header from '@/UI/Header';
+import ThemeToggle from '@/UI/ThemeToggle';
+import Header from '@/components/Header/Header';
 
 const Layout = ({ children }) => (
-  <div className="h-full w-full relative">
+  <div className="relative h-full min-h-screen w-full bg-[#f3fdf2] transition-colors duration-500 dark:bg-black-800 dark:text-white">
     <Header />
-    <main>{children}</main>
+    <main className="relative">
+      <ThemeToggle className="hidden lg:block" />
+      {children}
+    </main>
   </div>
 );
 
