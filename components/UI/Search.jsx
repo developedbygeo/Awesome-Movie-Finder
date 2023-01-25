@@ -1,11 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import Select from 'react-select';
-import { BiSearchAlt } from 'react-icons/bi';
 
+import Select from '@/UI/Select';
+import { BiSearchAlt } from 'react-icons/bi';
 import { selectOptions, platformLookup } from '@/data/search';
-import customSelectStyle from '@/styles/select-styles';
 
 const Search = ({
   shouldShowCategories,
@@ -19,6 +19,7 @@ const Search = ({
     register,
     handleSubmit,
     formState: { errors },
+    clearErrors,
   } = useForm();
 
   const defaultValue = platformLookup[defaultPlatform] || selectOptions[0];
@@ -32,45 +33,62 @@ const Search = ({
   }, [defaultPlatform, route]);
 
   const formSubmitHandler = ({ searchQuery }) =>
-    router.push(`/search?title=${searchQuery}&platform=${selectValue.value}`);
+    // router.push(`/search?title=${searchQuery}&platform=${selectValue.value}`);
+    console.log(searchQuery, selectValue.value);
 
   const selectGenreHandler = () =>
     setSelectValue((prevState) =>
       prevState === selectOptions[0] ? selectOptions[1] : selectOptions[0]
     );
 
+  const handleBlur = () => clearErrors('searchQuery');
+
   return (
-    <div className="h-auto py-5 w-full flex justify-start items-center gap-4">
+    <div className="flex h-auto w-full items-center justify-center py-5 pt-12">
       <form
-        className="w-full border-none flex justify-center items-center gap-4"
+        className="flex items-center gap-4 border-none"
         onSubmit={handleSubmit(formSubmitHandler)}
+        onBlur={handleBlur}
       >
         <button
           type="submit"
           title="Search now"
           aria-label="Search now"
-          className="btn highlight-focus h-20 ww-20 p-4 text-white"
+          className="btn highlight-focus h-fit rounded-full p-2 text-black-800 dark:text-white"
         >
-          <BiSearchAlt />
+          <BiSearchAlt className="text-lg" />
         </button>
-        <input
-          {...register('searchQuery', { required: true, minLength: 3 })}
-          placeholder={errors.searchQuery ? 'Field required' : inputPlaceholder}
-          type="text"
-          className={`bg-transparent border-none rounded-lg py-3 px-6 text-white/80 highlight-focus ${
-            errors.searchQuery && 'shadow-error'
+        <div
+          className={`shadow-sm dark:focus-within:border-indigo-600 dark:focus-within:ring-indigo-600 relative min-w-[20rem] rounded-md border border-secondary/50 px-4 py-4 focus-within:ring-1 focus:outline-none ${
+            errors.searchQuery &&
+            'focus-within:border-accent focus-within:ring-accent'
           }`}
-        />
-        {shouldShowCategories && (
-          <Select
-            onChange={selectGenreHandler}
-            styles={customSelectStyle}
-            value={selectValue}
-            options={selectOptions}
-            isSearchable={false}
-            id="awesome-select"
-            instanceId="awesome-select"
+        >
+          <label
+            htmlFor="name"
+            className="absolute -top-2 left-2 -mt-px inline-block bg-light px-1 font-medium text-gray-900 text-xs dark:bg-black-800 dark:text-gray-300"
+          >
+            Quick search
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            className="block w-full border-0 bg-transparent p-0 px-2 text-black-800 placeholder-gray-500 outline-none dark:text-white"
+            {...register('searchQuery', { required: true, minLength: 3 })}
+            placeholder={
+              errors.searchQuery ? 'Field required' : inputPlaceholder
+            }
           />
+        </div>
+        {shouldShowCategories && (
+          <div className="my-auto h-fit">
+            <Select
+              selectOptions={selectOptions}
+              value={selectValue}
+              setValue={setSelectValue}
+            />
+          </div>
         )}
       </form>
     </div>

@@ -20,7 +20,7 @@ const Select = ({ selectOptions, value, setValue }) => (
                   {value.label}
                 </p>
               </div>
-              <Listbox.Button className="bg-indigo-500 hover:bg-indigo-600 inline-flex items-center rounded-l-none rounded-r-md border-l-secondary p-2 font-medium text-white text-sm focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-offset-2 focus:ring-offset-gray-50 dark:border-l-secondary/50">
+              <Listbox.Button className="bg-indigo-500 hover:bg-indigo-600 inline-flex items-center rounded-l-none rounded-r-md border-l-secondary/50 p-2 font-medium text-white text-sm focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-gray-50 dark:border-l-secondary/50">
                 <span className="sr-only">Change published status</span>
                 <ChevronDownIcon
                   className="h-5 w-5 text-gray-900 dark:text-white"
