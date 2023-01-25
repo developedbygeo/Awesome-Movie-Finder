@@ -1,61 +1,35 @@
 import { useState, useEffect } from 'react';
 
+import useWindow from '@/hooks/useWindow';
 import useSlider from '@/hooks/useSlider';
-import SliderItem from './SliderItem';
+import SliderItem from './ContentItem';
 
-const SliderList = ({ trendingData, className, ...props }) => {
+const SliderList = ({
+  trendingData,
+  sliderOptions,
+  className,
+  useWide = false,
+}) => {
   const [data, setData] = useState(null);
   const [options, setOptions] = useState(null);
   const { ref, slider, currentSlide } = useSlider(options);
+  const [width] = useWindow();
+
+  const isMobile = width < 1024;
 
   useEffect(() => {
     if (trendingData) {
       setData(trendingData);
-      setOptions({
-        loop: true,
-        mode: 'free-snap',
-        centered: true,
-        slides: {
-          perView: 2,
-        },
-        breakpoints: {
-          '(min-width: 768px)': {
-            slides: {
-              perView: 4,
-              spacing: 10,
-            },
-          },
-          '(min-width: 1150px)': {
-            slides: {
-              perView: 7,
-              spacing: 20,
-            },
-          },
-          '(min-width: 319px) and (orientation: landscape) and (max-height: 450px)':
-            {
-              slides: {
-                perView: 4,
-                spacing: 10,
-              },
-            },
-        },
-        slideChanged(slide) {
-          // eslint-disable-next-line no-undef
-          setCurrentSlide(slide.details().relativeSlide);
-        },
-      });
+      setOptions(sliderOptions);
     }
-  }, [trendingData, slider]);
+  }, [trendingData, sliderOptions, slider]);
 
   return (
-    <article
-      className={`flex justify-around align-start flex-col ${className}`}
-      {...props}
-    >
-      <h1>Trending</h1>
-      <div className="w-full self-center flex justify-center align-center flex-col gap-12 overflow-hidden">
+    <article className={`align-start flex flex-col ${className}`}>
+      <h2 className={`${isMobile ? 'container' : ''}`}>Trending</h2>
+      <div className="align-center flex w-full flex-col justify-center gap-12 self-center overflow-hidden">
         <ul
-          className="w-full overflow-hidden keen-slider flex"
+          className="keen-slider flex w-full overflow-hidden"
           ref={ref}
           role="region"
           alt="Trending gallery"
@@ -69,6 +43,7 @@ const SliderList = ({ trendingData, className, ...props }) => {
                   className="keen-slider__slide"
                   key={item.id}
                   content={item}
+                  useWide={isMobile ? false : useWide}
                   priority={priority}
                   aria-label={`slide ${idx + 1} of ${data.length}`}
                   tabIndex={0}
