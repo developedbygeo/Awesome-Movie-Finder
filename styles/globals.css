@@ -19,26 +19,26 @@
 
 @layer components {
   .highlight-focus {
-    @apply focus:outline-none focus:shadow-focus;
+    @apply focus:shadow-focus focus:outline-none;
   }
 
   .btn {
-    @apply border-none outline-none bg-transparent cursor-pointer;
+    @apply cursor-pointer border-none bg-transparent outline-none;
   }
 
   .container {
-    @apply mx-auto px-6 lg:px-8 grid grid-cols-12 gap-2;
+    @apply mx-auto grid grid-cols-12 gap-2 px-6 lg:px-8;
   }
 
   .cta {
-    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+    @apply rounded bg-blue-500 py-2 px-4 font-bold text-white;
   }
 
   .secondary {
-    @apply bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded;
+    @apply rounded bg-gray-200 py-2 px-4 font-bold text-gray-700;
   }
 
   .link {
-    @apply relative text-secondary whitespace-nowrap transition-all duration-100 ease-in;
+    @apply relative whitespace-nowrap text-secondary transition-all duration-100 ease-in;
   }
 }
