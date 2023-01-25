@@ -2,6 +2,7 @@
 
 const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   darkMode: 'class',
@@ -13,6 +14,10 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Outfit', ...defaultTheme.fontFamily.sans],
+      display: ['Montserrat', 'sans-serif'],
+    },
     container: {
       center: true,
       padding: '1rem',
@@ -51,6 +56,8 @@ module.exports = {
       blue: colors.blue,
       secondary: '#5a698f',
       accent: '#FC4747',
+      dark: '#090c13',
+      light: '#fefdf2',
       green: '#5cdb5c',
       black: {
         100: '#d0d2d5',
@@ -65,9 +72,9 @@ module.exports = {
       },
     },
     boxShadow: {
-      error: '0 0 0 0 rgb(252, 71, 71) inset, rgb(252, 71, 71) 0 0 0 0.4rem',
+      error: '0 0 0 0 rgb(252, 71, 71) inset, rgb(252, 71, 71) 0 0 0 0.1rem',
       focus:
-        '0 0 0 0 rgb(130, 143, 176) inset, rgb(130, 143, 176) 0 0 0 0.4rem',
+        '0 0 0 0 rgb(130, 143, 176) inset, rgb(130, 143, 176) 0 0 0 0.1rem',
     },
   },
   // eslint-disable-next-line global-require

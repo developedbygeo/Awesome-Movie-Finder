@@ -39,6 +39,10 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-restricted-globals': 'warn',
     'global/require': 'off',
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.js', '.jsx', '.tsx'] },
+    ],
     camelcase: 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
