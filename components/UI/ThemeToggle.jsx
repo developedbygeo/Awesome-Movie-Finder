@@ -15,7 +15,7 @@ const ThemeToggle = ({ className }) => {
 
   return (
     <button
-      className={`btn absolute right-8 top-[2vh] p-6 text-xl ${className}`}
+      className={`btn absolute right-[0.4rem] top-[2vh] p-4 text-xl md:right-8 md:p-6 ${className}`}
       type="button"
       title={`Swap to ${theme === 'light' ? 'dark' : 'light'}`}
     >
