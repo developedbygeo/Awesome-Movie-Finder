@@ -10,7 +10,7 @@ const MobileNav = ({ className }) => (
     animate="visible"
     exit="exit"
     variants={navWrapperMobile}
-    className={`absolute top-[10vh] left-0 z-30 flex h-[90vh] w-screen flex-col items-center justify-around bg-gradient-to-br from-gray-100 to-black-200 py-20 transition-colors duration-500 dark:from-black-700 dark:to-black-500 lg:hidden lg:h-full lg:w-full lg:flex-col lg:justify-evenly ${className}`}
+    className={`absolute top-[10vh] left-0 z-30 flex h-[90vh] w-screen flex-col items-center justify-around bg-gradient-to-br from-gray-100 to-black-200 py-20 transition-colors duration-500 dark:from-black-700 dark:to-black-500 md:justify-center md:gap-24 lg:hidden lg:h-full lg:w-full lg:flex-col lg:justify-evenly ${className}`}
   >
     {nav.map((item) => (
       <motion.div variants={navItem} key={item.id}>
